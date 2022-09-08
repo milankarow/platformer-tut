@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+
+[node name="World" type="Node2D"]
+
+[node name="Box" parent="." instance=ExtResource( 1 )]
+position = Vector2( 99, 153 )
+
+[node name="Box2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 117, 153 )
+
+[node name="Box3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 135, 153 )
+
+[node name="Box4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 153, 153 )
+
+[node name="Box5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 171, 153 )
+
+[node name="Box6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 171, 135 )
+
+[node name="Box7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 189, 135 )
+
+[node name="Box8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 189, 117 )
+
+[node name="Box9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 207, 117 )
+
+[node name="Box10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 225, 117 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 117, 99 )
