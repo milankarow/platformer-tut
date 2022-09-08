@@ -1,111 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 
 [node name="World" type="Node2D"]
 
-[node name="Box" parent="." instance=ExtResource( 1 )]
-position = Vector2( 99, 153 )
-
-[node name="Box2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 117, 153 )
-
-[node name="Box3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 135, 153 )
-
-[node name="Box4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 153, 153 )
-
-[node name="Box5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 171, 153 )
-
-[node name="Box6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 171, 135 )
-
-[node name="Box7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 189, 135 )
-
-[node name="Box8" parent="." instance=ExtResource( 1 )]
-position = Vector2( 189, 117 )
-
-[node name="Box9" parent="." instance=ExtResource( 1 )]
-position = Vector2( 207, 117 )
-
-[node name="Box10" parent="." instance=ExtResource( 1 )]
-position = Vector2( 225, 117 )
-
-[node name="Box11" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 171 )
-
-[node name="Box12" parent="." instance=ExtResource( 1 )]
-position = Vector2( 297, 171 )
-
-[node name="Box13" parent="." instance=ExtResource( 1 )]
-position = Vector2( 279, 171 )
-
-[node name="Box14" parent="." instance=ExtResource( 1 )]
-position = Vector2( 261, 171 )
-
-[node name="Box15" parent="." instance=ExtResource( 1 )]
-position = Vector2( 261, 153 )
-
-[node name="Box16" parent="." instance=ExtResource( 1 )]
-position = Vector2( 243, 153 )
-
-[node name="Box17" parent="." instance=ExtResource( 1 )]
-position = Vector2( 225, 135 )
-
-[node name="Box18" parent="." instance=ExtResource( 1 )]
-position = Vector2( 99, 171 )
-
-[node name="Box19" parent="." instance=ExtResource( 1 )]
-position = Vector2( 81, 171 )
-
-[node name="Box20" parent="." instance=ExtResource( 1 )]
-position = Vector2( 63, 171 )
-
-[node name="Box21" parent="." instance=ExtResource( 1 )]
-position = Vector2( 45, 171 )
-
-[node name="Box22" parent="." instance=ExtResource( 1 )]
-position = Vector2( 27, 171 )
-
-[node name="Box23" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 171 )
-
-[node name="Box24" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 153 )
-
-[node name="Box25" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 135 )
-
-[node name="Box26" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 117 )
-
-[node name="Box27" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 99 )
-
-[node name="Box28" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, 81 )
-
-[node name="Box29" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 153 )
-
-[node name="Box30" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 135 )
-
-[node name="Box31" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 117 )
-
-[node name="Box32" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 99 )
-
-[node name="Box33" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 81 )
-
-[node name="Box34" parent="." instance=ExtResource( 1 )]
-position = Vector2( 315, 63 )
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 196624, 1, 65537, 196625, 1, 65539, 262158, 1, 65537, 262159, 1, 65538, 262160, 1, 65541, 262161, 1, 393219, 327689, 1, 65537, 327690, 1, 65539, 327694, 1, 458753, 327695, 1, 458754, 327696, 1, 458754, 327697, 1, 458755, 393223, 1, 65537, 393224, 1, 65538, 393225, 1, 65541, 393226, 1, 65540, 393227, 1, 65539, 458752, 1, 65537, 458753, 1, 65538, 458754, 1, 65538, 458755, 1, 65538, 458756, 1, 65538, 458757, 1, 65538, 458758, 1, 65538, 458759, 1, 65541, 458760, 1, 393218, 458761, 1, 393218, 458762, 1, 393218, 458763, 1, 65540, 458764, 1, 65538, 458765, 1, 65538, 458766, 1, 65538, 458767, 1, 65538, 458768, 1, 65538, 458769, 1, 65539, 524288, 1, 393217, 524289, 1, 393218, 524290, 1, 393218, 524291, 1, 393218, 524292, 1, 393218, 524293, 1, 393218, 524294, 1, 393218, 524295, 1, 393218, 524296, 1, 393218, 524297, 1, 393218, 524298, 1, 393218, 524299, 1, 393218, 524300, 1, 393218, 524301, 1, 393218, 524302, 1, 393218, 524303, 1, 393218, 524304, 1, 393218, 524305, 1, 393219, 589824, 1, 458753, 589825, 1, 458754, 589826, 1, 458754, 589827, 1, 458754, 589828, 1, 458754, 589829, 1, 458754, 589830, 1, 458754, 589831, 1, 458754, 589832, 1, 458754, 589833, 1, 458754, 589834, 1, 458754, 589835, 1, 458754, 589836, 1, 458754, 589837, 1, 458754, 589838, 1, 458754, 589839, 1, 458754, 589840, 1, 458754, 589841, 1, 458755 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 117, 99 )
+MIN_JUMP_SPEED = -50
