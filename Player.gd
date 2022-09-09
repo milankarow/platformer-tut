@@ -6,6 +6,7 @@ export(Resource) var moveData
 var velocity = Vector2.ZERO
 
 onready var animatedSprite = $AnimatedSprite
+onready var ladderCheck = $LadderCheck
 
 func _ready():
 	animatedSprite.frames = load("res://PlayerGreenSkin.tres")
@@ -13,6 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if is_on_ladder(): print("ladder")
 	
 	apply_gravity()
 	var input = Vector2.ZERO
@@ -41,6 +43,12 @@ func _physics_process(delta):
 	if just_landed:
 		animatedSprite.animation = "Run"
 		animatedSprite.frame = 1
+
+func is_on_ladder():
+	if not ladderCheck.is_colliding(): return false
+	var collider = ladderCheck.get_collider()
+	if not collider is Ladder: return false
+	return true
 	
 func apply_gravity():
 	velocity.y += moveData.GRAVITY
