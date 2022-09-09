@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://PlayerMovementData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+GRAVITY = 10
+MAX_SPEED = 80
+JUMP_SPEED = -210
+MIN_JUMP_SPEED = -105
+RUN_ACCELERATION = 10
+RUN_FRICTION = 10
+AIR_FRICTION = 1

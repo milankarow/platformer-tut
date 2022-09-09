@@ -1,13 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
-export(int) var GRAVITY = 10
-export(int) var MAX_SPEED = 80
-export(int) var JUMP_SPEED = -210
-export(int) var MIN_JUMP_SPEED = -105
-export(int) var RUN_ACCELERATION = 10
-export(int) var RUN_FRICTION = 10
-export(int) var AIR_FRICTION = 1
+export(Resource) var moveData
 
 var velocity = Vector2.ZERO
 
@@ -31,18 +25,15 @@ func _physics_process(delta):
 	else:
 		apply_acceleration(input.x)
 		animatedSprite.animation = "Run"
-		if input.x > 0:
-			animatedSprite.flip_h = true
-		else:
-			animatedSprite.flip_h = false
+		animatedSprite.flip_h = input.x > 0
 		
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
-			velocity.y = JUMP_SPEED
+			velocity.y = moveData.JUMP_SPEED
 	else:
 		animatedSprite.animation = "Jump"
-		if Input.is_action_just_released("ui_up") and velocity.y < MIN_JUMP_SPEED:
-			velocity.y = MIN_JUMP_SPEED
+		if Input.is_action_just_released("ui_up") and velocity.y < moveData.MIN_JUMP_SPEED:
+			velocity.y = moveData.MIN_JUMP_SPEED
 	
 	var was_in_air = not is_on_floor()
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -52,14 +43,14 @@ func _physics_process(delta):
 		animatedSprite.frame = 1
 	
 func apply_gravity():
-	velocity.y += GRAVITY
+	velocity.y += moveData.GRAVITY
 	velocity.y = min(velocity.y, 300)
 
 func apply_acceleration(amount):
-	velocity.x = move_toward(velocity.x, MAX_SPEED * amount, RUN_ACCELERATION)
+	velocity.x = move_toward(velocity.x, moveData.MAX_SPEED * amount, moveData.RUN_ACCELERATION)
 
 func apply_friction():
 	if is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, RUN_FRICTION)
+		velocity.x = move_toward(velocity.x, 0, moveData.RUN_FRICTION)
 	else:	
-		velocity.x = move_toward(velocity.x, 0, AIR_FRICTION)	
+		velocity.x = move_toward(velocity.x, 0, moveData.AIR_FRICTION)	
