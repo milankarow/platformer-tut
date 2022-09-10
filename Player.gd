@@ -1,9 +1,12 @@
 extends KinematicBody2D
 class_name Player
 
+enum { MOVE, CLIMB }
+
 export(Resource) var moveData
 
 var velocity = Vector2.ZERO
+var state = MOVE
 
 onready var animatedSprite = $AnimatedSprite
 onready var ladderCheck = $LadderCheck
@@ -14,13 +17,24 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if is_on_ladder(): print("ladder")
+
+
+	var input = Vector2.ZERO
+	input.x = Input.get_axis("ui_left", "ui_right")
+	input.y = Input.get_axis("ui_up", "ui_down")
+	
+	match state:
+		CLIMB: climb_state(input)
+		MOVE: move_state(input)
+
+
+		
+func move_state(input):
+	
+	if is_on_ladder() and input.y < 0:
+		state = CLIMB
 	
 	apply_gravity()
-	var input = Vector2.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-
-
 	if input.x == 0:
 		apply_friction()
 		animatedSprite.animation = "Idle"
@@ -43,6 +57,17 @@ func _physics_process(delta):
 	if just_landed:
 		animatedSprite.animation = "Run"
 		animatedSprite.frame = 1
+	
+func climb_state(input):
+	if not is_on_ladder():
+		state = MOVE
+	if input.length() != 0:
+		animatedSprite.animation = "Run"
+	else:
+		animatedSprite.animation = "Idle"
+				
+	velocity = input * 50
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 func is_on_ladder():
 	if not ladderCheck.is_colliding(): return false
