@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://characters_packed.png" type="Texture" id=1]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 18, 9, 0, 0, 0, 0, 54, -9, 0, 0, 0, 0, 108, -9, 0, 0, 0, 0, 153, 18, 0, 0, 0, 0, 198, 54, 0, 0, 0, 0, 189, 81, 0, 0, 0, 0, 135, 108, 0, 0, 0, 0, 81, 117, 0, 0, 0, 0, 63, 99, 0, 0, 0, 0, 36, 108, 0, 0, 0, 0, 9, 81, 0, 0, 0, 0, 18, 9 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "MoveAlongPathBounce"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MoveAlongPathLoop"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="MovingSpikeEnemy" type="Path2D"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 18, 9 )
+rotate = false
+
+[node name="Enemy" type="Node2D" parent="PathFollow2D"]
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D/Enemy"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 24, 24 )
+
+[node name="Hitbox" parent="PathFollow2D/Enemy" instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Enemy/Hitbox"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "MoveAlongPathLoop"
+anims/MoveAlongPathBounce = SubResource( 5 )
+anims/MoveAlongPathLoop = SubResource( 3 )
+"anims/New Anim" = SubResource( 6 )
+anims/RESET = SubResource( 4 )
