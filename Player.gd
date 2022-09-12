@@ -68,6 +68,7 @@ func move_state(input):
 	if just_landed:
 		animatedSprite.animation = "Run"
 		animatedSprite.frame = 1
+		SoundPlayer.play_sound(SoundPlayer.LAND)
 	
 	var just_left_ground = not (is_on_floor() or was_in_air)
 	if just_left_ground and velocity.y >= 0:
@@ -85,9 +86,14 @@ func climb_state(input):
 				
 	velocity = input * moveData.CLIMB_SPEED
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func player_die():
+	SoundPlayer.play_sound(SoundPlayer.HURT)
+	get_tree().reload_current_scene()
 	
 func input_jump():
 	if Input.is_action_just_pressed("ui_up") or buffered_jump:
+		SoundPlayer.play_sound(SoundPlayer.JUMP1)
 		velocity.y = moveData.JUMP_SPEED
 		buffered_jump = false
 
@@ -98,6 +104,7 @@ func input_jump_release():
 func input_double_jump():
 	if Input.is_action_just_pressed("ui_up") and double_jump > 0:
 		velocity.y = moveData.JUMP_SPEED
+		SoundPlayer.play_sound(SoundPlayer.JUMP2)
 		double_jump -= 1
 
 func buffer_jump():
