@@ -9,6 +9,8 @@ const BGM = preload("res://Sounds/HeatleyBros - HeatleyBros VI - 8 Bit Play.mp3"
 onready var audioPlayers = $AudioPlayers
 onready var musicPlayer = $MusicPlayer/MusicStream
 
+#func _ready():
+#	play_music(BGM)
 
 func play_sound(sound):
 	for stream in audioPlayers.get_children():
