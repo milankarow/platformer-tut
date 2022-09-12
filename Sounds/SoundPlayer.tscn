@@ -30,3 +30,8 @@ bus = "Sound"
 
 [node name="Stream8" type="AudioStreamPlayer" parent="AudioPlayers"]
 bus = "Sound"
+
+[node name="MusicPlayer" type="Node" parent="."]
+
+[node name="MusicStream" type="AudioStreamPlayer" parent="MusicPlayer"]
+bus = "Music"
