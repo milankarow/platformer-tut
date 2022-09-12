@@ -3,7 +3,7 @@ extends Node
 const HURT = preload("res://Sounds/ouch.wav")
 const JUMP1 = preload("res://Sounds/jump_1.wav")
 const JUMP2 = preload("res://Sounds/jump_2.wav")
-const LAND = preload("res://Sounds/land.wav")
+const LAND = preload("res://Sounds/land3.wav")
 
 onready var audioPlayers = $AudioPlayers
 
