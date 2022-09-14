@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://characters_packed.png" type="Texture" id=1]
 [ext_resource path="res://Hitbox.tscn" type="PackedScene" id=2]
@@ -26,7 +26,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 7, 7 )
+extents = Vector2( 7, 1 )
 
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.699805, 0.986355, 1 )
@@ -50,6 +50,9 @@ scale = 4.0
 scale_random = 1.0
 color_ramp = SubResource( 6 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 9, 7 )
+
 [node name="StompEnemy" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -62,12 +65,13 @@ animation = "Rising"
 position = Vector2( 0, -9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, 6 )
 shape = SubResource( 4 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, -9 )
+position = Vector2( 0, -3 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 4 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -80,3 +84,10 @@ one_shot = true
 explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 7 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( 0, -11 )
+shape = SubResource( 8 )

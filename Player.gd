@@ -7,7 +7,7 @@ export(Resource) var moveData
 
 var velocity = Vector2.ZERO
 var state = MOVE
-var double_jump
+var double_jump = 1
 var buffered_jump = false
 var coyote_jump = false
 
