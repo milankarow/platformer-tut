@@ -30,22 +30,23 @@ func _physics_process(delta):
 	
 	match state:
 		CLIMB: climb_state(input)
-		MOVE: move_state(input)
+		MOVE: move_state(input, delta)
 
+	if position.y > 300: player_die()
 
 		
-func move_state(input):
+func move_state(input, delta):
 	
 	if is_on_ladder() and input.y < 0:
 		state = CLIMB
 	
-	apply_gravity()
+	apply_gravity(delta)
 	
 	if input.x == 0: #check horizontal movement input
-		apply_friction()
+		apply_friction(delta)
 		animatedSprite.animation = "Idle"
 	else:
-		apply_acceleration(input.x)
+		apply_acceleration(input.x, delta)
 		animatedSprite.animation = "Run"
 		animatedSprite.flip_h = input.x > 0
 
@@ -131,18 +132,18 @@ func is_on_ladder():
 	if not collider is Ladder: return false
 	return true
 	
-func apply_gravity():
-	velocity.y += moveData.GRAVITY
+func apply_gravity(delta):
+	velocity.y += moveData.GRAVITY * delta
 	velocity.y = min(velocity.y, 300)
 
-func apply_acceleration(amount):
-	velocity.x = move_toward(velocity.x, moveData.MAX_SPEED * amount, moveData.RUN_ACCELERATION)
+func apply_acceleration(amount, delta):
+	velocity.x = move_toward(velocity.x, moveData.MAX_SPEED * amount, moveData.RUN_ACCELERATION * delta)
 
-func apply_friction():
+func apply_friction(delta):
 	if is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, moveData.RUN_FRICTION)
+		velocity.x = move_toward(velocity.x, 0, moveData.RUN_FRICTION * delta)
 	else:	
-		velocity.x = move_toward(velocity.x, 0, moveData.AIR_FRICTION)	
+		velocity.x = move_toward(velocity.x, 0, moveData.AIR_FRICTION *delta)	
 
 func _on_JumpBufferTimer_timeout():
 	buffered_jump = false

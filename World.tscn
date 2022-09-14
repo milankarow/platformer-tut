@@ -128,8 +128,8 @@ position = Vector2( 423, 9 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" parent="MovingSpikeEnemy2" index="0"]
-position = Vector2( 90, 98.9999 )
-offset = 0.000198364
+position = Vector2( 90, 99 )
+offset = 140.063
 
 [node name="AnimationPlayer" parent="MovingSpikeEnemy2" index="1"]
 autoplay = "MoveAlongPathBounce"
@@ -153,5 +153,11 @@ position = Vector2( 950, 54 )
 
 [node name="StompEnemy" parent="." instance=ExtResource( 9 )]
 position = Vector2( 86, 44 )
+
+[node name="StompEnemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 441, -27 )
+
+[node name="StompEnemy3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1377, 36 )
 
 [editable path="MovingSpikeEnemy2"]

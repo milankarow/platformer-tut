@@ -30,4 +30,6 @@ func _on_hit_checkpoint(checkpoint_position):
 
 
 #func _process(delta):
-#	if player.position.y > 300: player.player_die()
+#
+#	if get_node_or_null("Player") != null:
+#		if player.position.y > 300: player.player_die()

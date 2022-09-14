@@ -4,6 +4,7 @@ const HURT = preload("res://Sounds/ouch.wav")
 const JUMP1 = preload("res://Sounds/jump_1.wav")
 const JUMP2 = preload("res://Sounds/jump_2.wav")
 const LAND = preload("res://Sounds/land3.wav")
+const THUMP = preload("res://Sounds/thump.wav")
 const BGM = preload("res://Sounds/HeatleyBros - HeatleyBros VI - 8 Bit Play.mp3")
 
 onready var audioPlayers = $AudioPlayers

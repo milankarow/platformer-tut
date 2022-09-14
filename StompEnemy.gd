@@ -21,19 +21,22 @@ func _physics_process(delta):
 		
 		
 func hover_state():
-	state = FALL
+	if timer.time_left == 0:
+		state = FALL
 	
 func fall_state(delta):
 	animatedSprite.play("Falling")
-	position.y += 150 * delta
+	position.y += 200 * delta
 	if raycast.is_colliding():
 		var collision_point = raycast.get_collision_point()
 		position.y = collision_point.y
+		SoundPlayer.play_sound(SoundPlayer.THUMP)
 		state = LAND
-		timer.start(1.0)
+		timer.start(1.0)	
 		particles_2d.emitting = true
 
 func land_state():
+
 	if timer.time_left == 0:
 		state = RISE
 
@@ -43,3 +46,4 @@ func rise_state(delta):
 	position.y = move_toward(position.y, start_position.y, 50 * delta)
 	if position.y == start_position.y:
 		state = HOVER
+		timer.start(1.0)
