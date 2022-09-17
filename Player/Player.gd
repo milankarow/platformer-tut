@@ -18,7 +18,7 @@ onready var coyoteJumpTimer: = $CoyoteJumpTimer
 onready var remoteTransform: = $RemoteTransform2D
 
 func _ready():
-	animatedSprite.frames = load("res://PlayerGreenSkin.tres")
+	animatedSprite.frames = load("res://Player/PlayerGreenSkin.tres")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
