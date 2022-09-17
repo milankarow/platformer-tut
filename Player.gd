@@ -25,8 +25,8 @@ func _physics_process(delta):
 
 
 	var input = Vector2.ZERO
-	input.x = Input.get_axis("ui_left", "ui_right")
-	input.y = Input.get_axis("ui_up", "ui_down")
+	input.x = Input.get_axis("move_left", "move_right")
+	input.y = Input.get_axis("move_up", "move_down")
 	
 	match state:
 		CLIMB: climb_state(input)
@@ -100,23 +100,23 @@ func connect_camera(camera):
 	remoteTransform.remote_path = camera_path
 	
 func input_jump():
-	if Input.is_action_just_pressed("ui_up") or buffered_jump:
+	if Input.is_action_just_pressed("ui_accept") or buffered_jump:
 		SoundPlayer.play_sound(SoundPlayer.JUMP1)
 		velocity.y = moveData.JUMP_SPEED
 		buffered_jump = false
 
 func input_jump_release():
-	if Input.is_action_just_released("ui_up") and velocity.y < moveData.MIN_JUMP_SPEED:
+	if Input.is_action_just_released("ui_accept") and velocity.y < moveData.MIN_JUMP_SPEED:
 		velocity.y = moveData.MIN_JUMP_SPEED
 		
 func input_double_jump():
-	if Input.is_action_just_pressed("ui_up") and double_jump > 0:
+	if Input.is_action_just_pressed("ui_accept") and double_jump > 0:
 		velocity.y = moveData.JUMP_SPEED
 		SoundPlayer.play_sound(SoundPlayer.JUMP2)
 		double_jump -= 1
 
 func buffer_jump():
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_accept"):
 		buffered_jump = true
 		jumpBufferTimer.start()	
 
