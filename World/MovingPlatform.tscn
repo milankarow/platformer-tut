@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tiles_packed.png" type="Texture" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1, -17, 0, 0, 0, 0, 1, 65 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27, 9 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "MoveAlongBounce"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="MovingPlatform" type="Path2D"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 1, -17 )
+rotate = false
+
+[node name="Platform" type="KinematicBody2D" parent="PathFollow2D"]
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D/Platform"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 36, 54, 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Platform"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "MoveAlongBounce"
+playback_process_mode = 0
+anims/MoveAlongBounce = SubResource( 3 )
+anims/RESET = SubResource( 4 )

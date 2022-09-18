@@ -67,7 +67,8 @@ tracks/0/keys = {
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 18, 9 )
+position = Vector2( 35.8143, 107.27 )
+offset = 399.213
 rotate = false
 
 [node name="Enemy" type="Node2D" parent="PathFollow2D"]
