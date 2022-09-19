@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 18, 9, 0, 0, 0, 0, 54, -9, 0, 0, 0, 0, 108, -9, 0, 0, 0, 0, 153, 18, 0, 0, 0, 0, 198, 54, 0, 0, 0, 0, 189, 81, 0, 0, 0, 0, 135, 108, 0, 0, 0, 0, 81, 117, 0, 0, 0, 0, 63, 99, 0, 0, 0, 0, 36, 108, 0, 0, 0, 0, 9, 81, 0, 0, 0, 0, 18, 9 )
+"points": PoolVector2Array( 0, 0, 0, 0, 36, 108, 0, 0, 0, 0, 36, 19 )
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -67,8 +67,7 @@ tracks/0/keys = {
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 35.8143, 107.27 )
-offset = 399.213
+position = Vector2( 36, 108 )
 rotate = false
 
 [node name="Enemy" type="Node2D" parent="PathFollow2D"]

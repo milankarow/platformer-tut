@@ -12,7 +12,7 @@ extents = Vector2( 27, 9 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "MoveAlongBounce"
-length = 4.0
+length = 6.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PathFollow2D:unit_offset")
@@ -21,7 +21,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -46,8 +46,7 @@ tracks/0/keys = {
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 1, 64.8563 )
-offset = 81.7457
+position = Vector2( 1, -17 )
 rotate = false
 
 [node name="Platform" type="KinematicBody2D" parent="PathFollow2D"]
