@@ -467,7 +467,7 @@ tile_data = PoolIntArray( -983022, 0, 0, -983021, 0, 0, -983020, 0, 0, -983019, 
 position = Vector2( 1433, 36 )
 
 [node name="Door" parent="." index="5" instance=ExtResource( 4 )]
-position = Vector2( 103, -216 )
+position = Vector2( 99, -216 )
 target_level_path = "res://Levels/Level1.tscn"
 
 [node name="MovingPlatform" parent="." index="6" instance=ExtResource( 5 )]

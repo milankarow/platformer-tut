@@ -185,7 +185,7 @@ position = Vector2( 1883, 2 )
 position = Vector2( 1899, 2 )
 
 [node name="Door" parent="." index="32" instance=ExtResource( 9 )]
-position = Vector2( 2072, 128 )
+position = Vector2( 2071, 128 )
 target_level_path = "res://Levels/Level2.tscn"
 
 [editable path="MovingSpikeEnemy2"]
