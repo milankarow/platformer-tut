@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://baertoaster0.png" type="Texture" id=1]
+[ext_resource path="res://toastbaer.png" type="Texture" id=2]
+[ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Toastbear.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 6 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 6 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10.5, 7.5 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Dart_eyes"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Toastbaer/Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Toastbaer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Toastbaer:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Jump"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Toastbaer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, -60 ), Vector2( 0, 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Toastbaer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, -10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Toastbaer/Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Toastbaer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -60 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Toastbaer:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.4 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 44.5, 44.5 )
+
+[node name="Toastbear" type="Node2D"]
+position = Vector2( 0, -21 )
+script = ExtResource( 4 )
+
+[node name="Toastbaer" type="Area2D" parent="."]
+position = Vector2( 0, -60 )
+rotation = -0.181514
+
+[node name="Sprite" type="Sprite" parent="Toastbaer"]
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toastbaer"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="Hitbox" parent="Toastbaer" instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toastbaer/Hitbox"]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 0, 9 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -0.5, 13.5 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Dart_eyes"
+anims/Dart_eyes = SubResource( 4 )
+anims/Jump = SubResource( 6 )
+anims/RESET = SubResource( 5 )
+
+[node name="AlertZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlertZone"]
+position = Vector2( -0.5, -15.5 )
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="AlertZone" to="." method="_on_AlertZone_body_entered"]
+[connection signal="body_exited" from="AlertZone" to="." method="_on_AlertZone_body_exited"]
